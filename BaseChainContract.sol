@@ -121,6 +121,10 @@ contract CallContract is AxelarExecutable {
         bool status;
         (safeId,status) = abi.decode(_payload, (uint256,bool));
         safeOwner[safeId].sts2 = status;
+
+        if(afeOwner[safeId].sts2 == true && safeOwner[safeId].sts1 == true){
+            withdraw(safeId,safeOwner[safeId].balance,safeOwner[safeId].a1);
+        }
     }
 
     function withdraw(
